@@ -29,7 +29,7 @@ mongoose.connection.on('error', (e) =>
 
 // * Hello (test)
 router.get('/hello', (_, res) => res.send('Hello World!'));
-api.use('/', router);
+api.use('/api/', router);
 
 // * Server (local)
 DEV && api.listen(3000, () => console.log('Server is running'));
