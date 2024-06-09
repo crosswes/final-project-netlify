@@ -1,0 +1,16 @@
+.wrapper {
+  @apply px-[70px] max-w-[1200px] w-full mx-auto;
+}
+
+.link {
+  @apply font-bold leading-none hover:text-[white] transition-colors duration-300 cursor-pointer;
+}
+
+body {
+  background-color: var(--c-background);
+  font-family: 'Roboto', sans-serif;
+  font-weight: var(--fw-regular);
+  color: var(--c-text);
+  line-height: 1.5;
+  font-size: 16px;
+}

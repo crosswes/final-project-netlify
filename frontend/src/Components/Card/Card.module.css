@@ -1,0 +1,101 @@
+.card {
+  background-color: var(--c-base-card);
+  border-radius: 6px 36px 6px 36px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 110px;
+  max-width: 250px;
+  display: flex;
+  height: 310px;
+  width: 100%;
+}
+.coffee {
+  position: absolute;
+  top: -20px;
+}
+.type {
+  background-color: var(--c-yellow-light);
+  color: var(--c-yellow-dark);
+  padding: 4px 8px 4px 8px;
+  justify-content: center;
+  border-radius: 100px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 10px;
+  display: flex;
+  height: 20px;
+}
+.typeBlock {
+  display: flex;
+  gap: 5px;
+}
+.description {
+  text-align: center;
+}
+.panel {
+  justify-content: space-between;
+  padding-bottom: 20px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-top: 40px;
+  display: flex;
+  height: 40px;
+  gap: 30px;
+}
+.name {
+  font-family: var(--f-baloo);
+  margin-bottom: 5px;
+  font-weight: 700;
+  margin-top: 15px;
+  font-size: 20px;
+}
+.description {
+  font-size: 14px;
+  color: var(--c-base-lable);
+}
+.price {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.number {
+  font-family: var(--f-baloo);
+  font-weight: 800;
+  font-size: 24px;
+}
+.buyBlock {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+.background {
+  background-color: var(--c-purple-dark);
+  justify-content: center;
+  color: var(--c-white);
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+.countBlock {
+  background-color: var(--c-base-button);
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  padding: 8px;
+  height: 40px;
+  width: 70px;
+  gap: 5px;
+}
+.minus,
+.plus {
+  fill: var(--c-purple);
+  width: 15px;
+}
