@@ -6,7 +6,7 @@
   "main": "api.js",
   "scripts": {
     "dev": "nodemon netlify/functions/api.js",
-    "build": "tsc && vite build",
+    "build": "cd frontend && npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -23,6 +23,7 @@
     "i18next": "^23.11.3",
     "mongodb": "^6.7.0",
     "mongoose": "^8.2.3",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.1",
