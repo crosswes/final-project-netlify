@@ -6,7 +6,7 @@
   "main": "api.js",
   "scripts": {
     "dev": "nodemon netlify/functions/api.js",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm i && npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

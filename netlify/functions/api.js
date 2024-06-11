@@ -17,7 +17,16 @@ api.use(express.json());
 api.use(cors());
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-api.use(express.static(path.join(__dirname, '../../frontend/dist')));
+
+// idk what i need here
+api.use(express.static(path.join(__dirname, '/dist')));
+
+// api.use(
+//   express.static(
+//     path.dirname('../../../frontend/dist')
+//     // path.dirname(fileURLToPath(import.meta.url) + '../../../frontend/dist')
+//   )
+// );
 
 // * Connect to DB
 const PASSWORD = '5kIUW3mgOq6JZVVW';
@@ -32,12 +41,11 @@ mongoose.connection.on('error', (e) =>
   console.log(`Connected to DB failed: ${e}`)
 );
 
-router.get('/', (request, response) => {
-  // ? __dirname is not defined
-  console.log(__dirname);
+router.get('*', (request, response) => {
   return response.sendFile(
-    path.dirname(fileURLToPath(import.meta.url)) +
-      '../../../frontend/dist/index.html'
+    // path.join('../../frontend/dist/index.html')
+    path.dirname(fileURLToPath(import.meta.url))
+    // '../../../frontend/dist/index.html'
   );
 });
 
