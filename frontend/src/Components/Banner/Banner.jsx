@@ -16,8 +16,9 @@ const Banner = () => {
 
   return (
     <>
-      <img src='/background.png' className='absolute z-[-10]' />
-      <div className='wrapper m-0 p-0 flex items-center justify-center relative min-h-[calc(100vh-100px)]'>
+      <img src='/background.png' className='absolute z-[-10] w-full' />
+
+      <div className='wrapper m-0 p-0 flex items-center justify-center relative w-full min-h-[calc(100vh-100px)]'>
         {/* Title & Description */}
         <div className={styles.content}>
           <div className={styles.container}>
@@ -43,7 +44,11 @@ const Banner = () => {
 
         {/* Right side image */}
         <div>
-          <img className='min-w-[350px]' src='/Banner.png' alt='Banner' />
+          <img
+            className='min-w-[350px] select-none'
+            src='/Banner.png'
+            alt='Banner'
+          />
         </div>
       </div>
     </>

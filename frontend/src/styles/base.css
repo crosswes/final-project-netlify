@@ -14,3 +14,7 @@ body {
   line-height: 1.5;
   font-size: 16px;
 }
+
+::selection {
+  background-color: rgba(144, 238, 144, 0.347);
+}
