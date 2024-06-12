@@ -1,0 +1,14 @@
+.label {
+  display: block;
+}
+.title {
+  margin-bottom: 5px;
+  line-height: 1;
+}
+.error {
+  color: var(--c-red);
+  margin-bottom: 2px;
+  font-size: 12px;
+  margin-top: 2px;
+  height: 20px;
+}

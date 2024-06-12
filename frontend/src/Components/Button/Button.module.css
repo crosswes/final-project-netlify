@@ -1,0 +1,26 @@
+.white {
+  background-color: var(--c-white);
+  border: 1px solid var(--c-lightblue);
+  color: var(--c-black);
+}
+.orange {
+  background-color: var(--c-orange);
+  color: var(--c-white);
+  border: none;
+}
+.register {
+  border: 1px solid var(--c-light-grey);
+  background-color: var(--c-blue);
+  justify-content: center;
+  color: var(--c-white);
+  white-space: nowrap;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+}
+/* Not working :( */
+.register:disabled {
+  background-color: var(--c-light-grey);
+  color: var(--c-grey);
+  cursor: not-allowed;
+}
