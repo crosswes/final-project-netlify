@@ -13,7 +13,6 @@ import '../../../public/Banner.png';
 
 const Banner = () => {
   const { t } = useTranslation();
-
   return (
     <>
       <img src='/background.png' className='absolute z-[-10] w-full' />
@@ -25,7 +24,6 @@ const Banner = () => {
             <div className={styles.title}>{t('banner.title')}</div>
             <div className={styles.description}>{t('banner.description')}</div>
           </div>
-
           {/* Features */}
           <div className={styles.featuresContainer}>
             {Object.keys(DATA).map((key) => {

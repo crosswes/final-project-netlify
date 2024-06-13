@@ -1,5 +1,5 @@
 // * Base
-import { coffeeContext } from '../../helpers/coffeeContext';
+import { cartContext } from '../../cartContext';
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
 import { Formik } from 'formik';
@@ -11,6 +11,7 @@ import Icon from '../Icon/Icon';
 import Page from '../Page/Page';
 import AdressCardTitle from './AdressCardTitle';
 import PaymentCardTitle from './PaymentCardTitle';
+import SelectedCoffees from './SelectedCoffees';
 
 // *  Початкові значення
 const INITIAL_VALUES = {
@@ -95,7 +96,8 @@ const validators = ({ zip, street, number, city, state, flat, payment }) => {
 
 const DeliveryForm = () => {
   const { t } = useTranslation();
-  const { coffeeNameContext } = useContext(coffeeContext);
+  const { coffeeName, cartQuantity, setCartQuantity, coffeeImage } =
+    useContext(cartContext);
 
   return (
     <>
@@ -122,8 +124,9 @@ const DeliveryForm = () => {
               }}
             >
               <div className='flex gap-[30px]'>
-                <div className='w-full max-w-[640px]'>
+                <div className='w-full max-w-[640px] max-h-[600px] h-full'>
                   {/* Title */}
+                  {/* It says that bold is already applied with font-[var(--f-baloo)] but when i delete it the font become thin for some reason */}
                   <h3 className='font-[var(--fw-bold)] text-[18px] font-[var(--f-baloo)] text-[var(--c-base-subtitle)] mb-4 mt-10'>
                     {t('form.fill')}
                   </h3>
@@ -292,40 +295,15 @@ const DeliveryForm = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Right side */}
-                {/* // ! idk if this div needed */}
                 <div>
+                  {/* It says that bold is already applied with font-[var(--f-baloo)] but when i delete it the font become thin for some reason */}
                   <h3 className='font-[var(--fw-bold)] text-[18px] font-[var(--f-baloo)] text-[var(--c-base-subtitle)] mb-4 mt-10'>
                     {t('form.delivery.selected')}
                   </h3>
-                  <div>
-                    {/* Selected Coffe 1 */}
-                    <div>
-                      {/* <div>{coffeeContext.image}</div> */}
-                      <div>
-                        <div>{coffeeNameContext} || Coffe name</div>
-                        <div>price</div>
-                      </div>
-                      <div>
-                        <div>count</div>
-                        <div>remover</div>
-                      </div>
-                    </div>
-                    {/* Selected Coffe 2
-                    <div>
-                      <div>img</div>
-                      <div>
-                        <div>name</div>
-                        <div>price</div>
-                      </div>
-                      <div>
-                        <div>count</div>
-                        <div>remover</div>
-                      </div>
-                    </div> */}
+                  <div className='p-10 bg-[var(--c-base-card)] items-center w-[450px] max-h-[600px] min-h-[125px] rounded-tl-[6px] rounded-tr-[44px] rounded-bl-[44px] rounded-br-[6px]'>
+                    {/* Selected Coffes */}
+                    <SelectedCoffees />
                   </div>
-                  {/* // ! idk if this div needed */}
                 </div>
               </div>
 

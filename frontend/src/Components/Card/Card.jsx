@@ -1,6 +1,5 @@
 // * Base
-import { coffeeContext } from '../../helpers/coffeeContext';
-import { cartContext } from '../../helpers/cartContext';
+import { cartContext } from '../../cartContext';
 import { useContext, useState } from 'react';
 import { t } from 'i18next';
 
@@ -19,10 +18,7 @@ const Card = ({
   image = { src: '', alt: 'Coffe' },
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const { setCartQuantity } = useContext(cartContext);
-  //
-  const [coffeeName, setCoffeeName] = useState(name);
-  const { coffeeNameContext, setCoffeeNameContext } = useContext(coffeeContext);
+  const { setCartQuantity, addCoffeeToCart } = useContext(cartContext);
 
   return (
     <div className={styles.card}>
@@ -63,8 +59,7 @@ const Card = ({
             <Button
               onClick={() => {
                 setCartQuantity((prev) => prev + quantity);
-                setCoffeeNameContext(coffeeName);
-                console.log(coffeeNameContext);
+                addCoffeeToCart({ name, quantity, image });
                 setQuantity(1);
               }}
             >

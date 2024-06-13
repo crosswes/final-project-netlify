@@ -1,5 +1,5 @@
 // * Base
-import { cartContext } from '../../helpers/cartContext';
+import { cartContext } from '../../cartContext';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
@@ -34,11 +34,13 @@ const Header = () => {
         </div>
         <Link to='/form'>
           <div className='w-10 p-[8px] h-10 text-[#c47f17] relative rounded-[6px] bg-yellow-light'>
-            <div className='absolute w-5 h-5 left-[70%] bottom-[70%] bg-yellow-dark rounded-full flex items-center justify-center p'>
-              <span className='text-white text-xs font-bold'>
-                {cartQuantity}
-              </span>
-            </div>
+            {cartQuantity > 0 && (
+              <div className='absolute w-5 h-5 left-[70%] bottom-[70%] bg-yellow-dark rounded-full flex items-center justify-center p'>
+                <span className='text-white text-xs font-bold'>
+                  {cartQuantity}
+                </span>
+              </div>
+            )}
             <Icon icon='cart' />
           </div>
         </Link>

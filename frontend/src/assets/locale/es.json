@@ -55,5 +55,7 @@
   "form.payment.credit": "Cartão de Crédito",
   "form.payment.debit": "Cartão de Débito",
   "form.payment.cash": "Dinheiro",
-  "form.delivery.selected": "Cafés selecionados"
+  "form.delivery.selected": "Cafés selecionados",
+  "cart.empty": "Seu carrinho está vazio :(",
+  "cart.remove": "Remover"
 }

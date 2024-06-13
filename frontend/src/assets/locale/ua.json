@@ -55,5 +55,7 @@
   "form.payment.credit": "Кредитна картка",
   "form.payment.debit": "Дебетова картка",
   "form.payment.cash": "Готівка",
-  "form.delivery.selected": "Обрана кава"
+  "form.delivery.selected": "Обрана кава",
+  "cart.empty": "Ваш кошик порожній :(",
+  "cart.remove": "Видалити"
 }

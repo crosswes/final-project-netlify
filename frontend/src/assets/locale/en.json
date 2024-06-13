@@ -55,5 +55,7 @@
   "form.payment.credit": "Credit Card",
   "form.payment.debit": "Debit Card",
   "form.payment.cash": "Cash",
-  "form.delivery.selected": "Selected coffees"
+  "form.delivery.selected": "Selected coffees",
+  "cart.empty": "Your cart is empty :(",
+  "cart.remove": "Remove"
 }

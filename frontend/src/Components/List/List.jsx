@@ -15,7 +15,6 @@ const List = () => {
   return (
     <section>
       <Page title={t('main.title')} titleClassName={styles.title}>
-        {/* Make sure to understand this part */}
         <div className={styles.wrapper}>
           {Object.keys(DATA).map((key, index) => (
             <Card key={index} {...DATA[key]} />
