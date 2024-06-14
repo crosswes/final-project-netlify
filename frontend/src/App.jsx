@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 // * Component
 import Header from './Components/Header/Header';
-import { set } from 'mongoose';
 
 function App() {
   const [quantity, setQuantity] = useState(1);
@@ -13,6 +12,7 @@ function App() {
   const [coffeeName, setCoffeeName] = useState('');
   const [coffeeImage, setCoffeeImage] = useState({ src: '', alt: 'Coffe' });
   const [cartItems, setCartItems] = useState([]);
+  const [price, setPrice] = useState(0);
 
   // * Add coffee to cart
   const addCoffeeToCart = (coffee) => {
@@ -30,24 +30,48 @@ function App() {
   };
 
   // * Update cart item quantity
-  const updateCartItemQuantity = (name) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.name === name ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-    setCartQuantity((prev) => prev + 1);
+  const updateCartItemQuantity = (name, newQuantity) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.name === name) {
+          const quantityDifference = newQuantity - item.quantity;
+          setCartQuantity((prev) => prev + quantityDifference);
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      });
+    });
   };
 
+  // // * Remove coffee from cart
+  // const removeCoffeeFromCart = (name) => {
+  //   setCartItems((prevItems) => {
+  //     const coffee = prevItems.find((item) => item.name === name);
+  //     if (coffee) {
+  //       setCartQuantity((prev) => prev - coffee.quantity);
+  //     }
+  //     return prevItems.filter((item) => item.name !== name);
+  //   });
+  // };
   // * Remove coffee from cart
-  const removeCoffeeFromCart = (name) => {
+  const removeCoffeeFromCart = (name, quantityToRemove) => {
     setCartItems((prevItems) => {
-      const coffee = prevItems.find((item) => item.name === name);
-      if (coffee) {
-        setCartQuantity((prev) => prev - coffee.quantity);
+      const item = prevItems.find((item) => item.name === name);
+      if (!item) return prevItems; // item not found, return unchanged list
+
+      if (item.quantity <= quantityToRemove) {
+        // Remove item completely if quantity to remove is more or equal
+        return prevItems.filter((item) => item.name !== name);
+      } else {
+        // Reduce item quantity
+        return prevItems.map((item) =>
+          item.name === name
+            ? { ...item, quantity: item.quantity - quantityToRemove }
+            : item
+        );
       }
-      return prevItems.filter((item) => item.name !== name);
     });
+    setCartQuantity((prev) => prev - quantityToRemove);
   };
 
   return (
@@ -67,6 +91,8 @@ function App() {
           addCoffeeToCart,
           updateCartItemQuantity,
           removeCoffeeFromCart,
+          price,
+          setPrice,
         }}
       >
         <Header />

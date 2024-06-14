@@ -57,5 +57,9 @@
   "form.payment.cash": "Barzahlung",
   "form.delivery.selected": "Ausgewählte Kaffees",
   "cart.empty": "Ihr Warenkorb ist leer :(",
-  "cart.remove": "Entfernen"
+  "cart.remove": "Entfernen",
+  "cart.items": "Artikel",
+  "cart.delivery": "Lieferung",
+  "cart.total": "Gesamt",
+  "cart.order": "BESTELLEN"
 }

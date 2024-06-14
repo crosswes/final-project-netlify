@@ -18,7 +18,8 @@ const Card = ({
   image = { src: '', alt: 'Coffe' },
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const { setCartQuantity, addCoffeeToCart } = useContext(cartContext);
+  const { cartQuantity, setCartQuantity, addCoffeeToCart, setPrice } =
+    useContext(cartContext);
 
   return (
     <div className={styles.card}>
@@ -59,7 +60,8 @@ const Card = ({
             <Button
               onClick={() => {
                 setCartQuantity((prev) => prev + quantity);
-                addCoffeeToCart({ name, quantity, image });
+                setPrice(9.9);
+                addCoffeeToCart({ name, quantity, image, price });
                 setQuantity(1);
               }}
             >

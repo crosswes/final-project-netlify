@@ -1,20 +1,18 @@
 // * Base
-import cn from 'classnames';
-
-// * Styles
-import styles from './Button.module.css';
+import { useTranslation } from 'react-i18next';
 
 const Button = ({
-  text = '',
-  className = [],
+  className = 'whitespace-nowrap',
   type = 'button',
-  onClick,
+  text = '',
   children,
+  onClick,
 }) => {
+  const { t } = useTranslation();
   return (
-    <button className={cn(styles[className])} onClick={onClick} type={type}>
+    <button className={className} onClick={onClick} type={type}>
       {children}
-      <span>{text}</span>
+      <span>{t(text)}</span>
     </button>
   );
 };

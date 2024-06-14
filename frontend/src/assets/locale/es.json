@@ -57,5 +57,9 @@
   "form.payment.cash": "Dinheiro",
   "form.delivery.selected": "Cafés selecionados",
   "cart.empty": "Seu carrinho está vazio :(",
-  "cart.remove": "Remover"
+  "cart.remove": "Remover",
+  "cart.items": "Total de itens",
+  "cart.delivery": "Entrega",
+  "cart.total": "Total",
+  "cart.order": "CONFIRMAR PEDIDO"
 }

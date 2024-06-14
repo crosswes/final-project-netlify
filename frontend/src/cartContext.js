@@ -14,4 +14,12 @@ export const cartContext = createContext({
   addCoffeeToCart: () => {},
   updateCartItemQuantity: () => {},
   removeCoffeeFromCart: () => {},
+  price: 9.9,
+  setPrice: () => {},
 });
+
+// ! delete unnecessary code
+// ! delete unnecessary code
+// ! delete unnecessary code
+// ! delete unnecessary code
+// ! delete unnecessary code

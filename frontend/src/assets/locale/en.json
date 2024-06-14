@@ -57,5 +57,9 @@
   "form.payment.cash": "Cash",
   "form.delivery.selected": "Selected coffees",
   "cart.empty": "Your cart is empty :(",
-  "cart.remove": "Remove"
+  "cart.remove": "Remove",
+  "cart.items": "Items",
+  "cart.delivery": "Delivery",
+  "cart.total": "Total",
+  "cart.order": "COMPLETE ORDER"
 }

@@ -9,6 +9,7 @@ import App from './App';
 // * Lazy components
 const Main = lazy(() => import('./pages/Main'));
 const Form = lazy(() => import('./pages/Form'));
+const Delivery = lazy(() => import('./pages/Delivery'));
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
       {
         path: '/form',
         element: <Element component={<Form />} />,
+      },
+      {
+        path: '/delivery',
+        element: <Element component={<Delivery />} />,
       },
       {
         path: '*',

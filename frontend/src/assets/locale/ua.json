@@ -57,5 +57,9 @@
   "form.payment.cash": "Готівка",
   "form.delivery.selected": "Обрана кава",
   "cart.empty": "Ваш кошик порожній :(",
-  "cart.remove": "Видалити"
+  "cart.remove": "Видалити",
+  "cart.items": "Товари",
+  "cart.delivery": "Доставка",
+  "cart.total": "Всього",
+  "cart.order": "ЗАМОВИТИ"
 }

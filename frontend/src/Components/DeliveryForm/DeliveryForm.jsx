@@ -5,13 +5,13 @@ import { useContext } from 'react';
 import { Formik } from 'formik';
 
 // * Components
+import PaymentCardTitle from './PaymentCardTitle';
+import AdressCardTitle from './AdressCardTitle';
+import SelectedCoffees from './SelectedCoffees';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
-import Page from '../Page/Page';
-import AdressCardTitle from './AdressCardTitle';
-import PaymentCardTitle from './PaymentCardTitle';
-import SelectedCoffees from './SelectedCoffees';
+import { Link } from 'react-router-dom';
 
 // *  Початкові значення
 const INITIAL_VALUES = {
@@ -96,8 +96,10 @@ const validators = ({ zip, street, number, city, state, flat, payment }) => {
 
 const DeliveryForm = () => {
   const { t } = useTranslation();
-  const { coffeeName, cartQuantity, setCartQuantity, coffeeImage } =
-    useContext(cartContext);
+  const { price, cartQuantity } = useContext(cartContext);
+  const totalItemsPrice = (price * 10 * cartQuantity) / 10;
+  const deliveryFee = 3.5;
+  const totalPrice = totalItemsPrice + deliveryFee;
 
   return (
     <>
@@ -215,9 +217,9 @@ const DeliveryForm = () => {
                     </div>
                   </div>
                   {/* Payment card */}
-                  <div className='px-[40px] rounded-[6px] pb-[40px] bg-[var(--c-base-card)] max-w-[640px]'>
+                  <div className='px-[40px] rounded-[6px] py-[40px] bg-[var(--c-base-card)] max-w-[640px]'>
                     <PaymentCardTitle />
-                    <div className='flex gap-3 m-b-[-20px]'>
+                    <div className='flex gap-3'>
                       {/* Credit card */}
                       <label className='w-full cursor-pointer'>
                         <div
@@ -225,7 +227,7 @@ const DeliveryForm = () => {
                             values.payment === 'credit'
                               ? 'bg-[var(--c-purple-light)] border-[var(--c-purple)] border-[1px]'
                               : ''
-                          } gap-2 justify-center rounded-[6px] hover:bg-[var(--c-base-hover)] ease-in-out transition-all duration-300 items-center px-2 flex h-[50px] w-full max-w-[180px] bg-[var(--c-base-button)]`}
+                          } gap-2 text-center whitespace-nowrap justify-center rounded-[6px] hover:bg-[var(--c-base-hover)] ease-in-out transition-all duration-300 items-center px-2 flex h-[50px] w-full max-w-[180px] bg-[var(--c-base-button)]`}
                         >
                           <div className='text-[var(--c-purple)]'>
                             <Icon icon='creditCard' />
@@ -250,7 +252,7 @@ const DeliveryForm = () => {
                             values.payment === 'debit'
                               ? 'bg-[var(--c-purple-light)] border-[var(--c-purple)] border-[1px]'
                               : ''
-                          } gap-2 justify-center rounded-[6px] hover:bg-[var(--c-base-hover)] ease-in-out transition-all duration-300 items-center px-2 flex h-[50px] w-full max-w-[180px] bg-[var(--c-base-button)]`}
+                          } gap-2 text-center whitespace-nowrap justify-center rounded-[6px] hover:bg-[var(--c-base-hover)] ease-in-out transition-all duration-300 items-center px-2 flex h-[50px] w-full max-w-[180px] bg-[var(--c-base-button)]`}
                         >
                           <div className='text-[var(--c-purple)]'>
                             <Icon icon='bank' />
@@ -275,7 +277,7 @@ const DeliveryForm = () => {
                             values.payment === 'cash'
                               ? 'bg-[var(--c-purple-light)] border-[var(--c-purple)] border-[1px]'
                               : ''
-                          } gap-2 justify-center rounded-[6px] hover:bg-[var(--c-base-hover)] ease-in-out transition-all duration-300 items-center px-2 flex h-[50px] w-full max-w-[180px] bg-[var(--c-base-button)]`}
+                          } gap-2 text-center whitespace-nowrap justify-center rounded-[6px] hover:bg-[var(--c-base-hover)] ease-in-out transition-all duration-300 items-center px-2 flex h-[50px] w-full max-w-[180px] bg-[var(--c-base-button)]`}
                         >
                           <div className='text-[var(--c-purple)]'>
                             <Icon icon='money' />
@@ -300,20 +302,45 @@ const DeliveryForm = () => {
                   <h3 className='font-[var(--fw-bold)] text-[18px] font-[var(--f-baloo)] text-[var(--c-base-subtitle)] mb-4 mt-10'>
                     {t('form.delivery.selected')}
                   </h3>
-                  <div className='p-10 bg-[var(--c-base-card)] items-center w-[450px] max-h-[600px] min-h-[125px] rounded-tl-[6px] rounded-tr-[44px] rounded-bl-[44px] rounded-br-[6px]'>
-                    {/* Selected Coffes */}
-                    <SelectedCoffees />
+                  <div className='p-10 bg-[var(--c-base-card)] items-center w-[370px] max-h-[640px] min-h-[125px] rounded-tl-[6px] rounded-tr-[44px] rounded-bl-[44px] rounded-br-[6px]'>
+                    {/* If the cart is empty */}
+                    {cartQuantity === 0 && (
+                      <div className='text-[var(--c-base-text)] flex justify-center items-center h-10 text-[14px]'>
+                        {t('cart.empty')}
+                      </div>
+                    )}
+                    {cartQuantity > 0 && (
+                      <>
+                        <SelectedCoffees />
+                        {/* Total pricing */}
+                        <div className='flex flex-col gap-[10px] mb-[25px]'>
+                          <div className='flex justify-between text-[14px] align-middle text-center'>
+                            <div>{t('cart.items')}</div>
+                            <div>{totalItemsPrice + ' R$'}</div>
+                          </div>
+                          <div className='flex justify-between text-[14px] align-middle text-center'>
+                            <div>{t('cart.delivery')}</div>
+                            <div>{deliveryFee + ' R$'}</div>
+                          </div>
+                          <div className='flex justify-between text-[var(--c-base-subtitle)] text-[20px] font-[700] align-middle text-center'>
+                            <div>{t('cart.total')}</div>
+                            <div>{totalPrice + ' R$'}</div>
+                          </div>
+                        </div>
+                        {/* Submit order button */}
+                        <Link to='/delivery'>
+                          <Button
+                            className='text-[var(--c-white)] text-[15px] font-[700] bg-[var(--c-yellow)] px-3 w-full min-h-[50px] h-full rounded-[6px] py-2 whitespace-nowrap'
+                            text={t('cart.order')}
+                            disabled={isSubmitting}
+                            type='submit'
+                          />
+                        </Link>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
-
-              {/* Submit form button*/}
-              <Button
-                className='register bg-black'
-                text='Sign up'
-                disabled={isSubmitting}
-                type='submit'
-              />
             </form>
           );
         }}

@@ -5,12 +5,41 @@
 .link {
   @apply font-bold leading-none hover:text-[white] transition-colors duration-300 cursor-pointer;
 }
+.gradient-border-wrapper {
+  position: relative;
+  display: inline-block; /* Adjust as needed */
+}
+
+.gradient-border {
+  position: relative;
+  z-index: 1;
+  border-radius: 6px 36px 6px 36px; /* Match the desired border-radius */
+  background-color: white; /* Change this to the desired background color */
+  padding: 40px; /* Adjust padding as needed */
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 6px 36px 6px 36px; /* Match the desired border-radius */
+  padding: 2px; /* Adjust padding to match border width */
+  background: linear-gradient(90deg, #dbac2c 0%, #8047f8 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  /* This line above is critical for ensuring the content doesn't cover the gradient */
+}
 
 body {
   background-color: var(--c-background);
   font-family: 'Roboto', sans-serif;
   font-weight: var(--fw-regular);
-  color: var(--c-text);
+  color: var(--c-base-text);
   line-height: 1.5;
   font-size: 16px;
 }

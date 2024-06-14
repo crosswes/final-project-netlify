@@ -8,15 +8,8 @@ import Button from '../Button/Button';
 import Icon from '../Icon/Icon';
 
 const SelectedCoffees = () => {
-  const { cartItems, updateCartItemQuantity, removeCoffeeFromCart } =
+  const { cartItems, updateCartItemQuantity, removeCoffeeFromCart, price } =
     useContext(cartContext);
-
-  if (cartItems.length === 0)
-    return (
-      <div className='flex justify-center items-center h-[45px]'>
-        {t('cart.empty')}
-      </div>
-    );
 
   return (
     <div>
@@ -76,8 +69,8 @@ const SelectedCoffees = () => {
                   </div>
                 </div>
               </div>
-              <div className='font-[700] text-[16px] text-[var(--c-base-text)]'>
-                {(coffee.quantity * 99) / 10 + ' R$'}
+              <div className='font-[700] whitespace-nowrap text-[16px] text-[var(--c-base-text)]'>
+                {(coffee.quantity * (price * 10)) / 10 + ' R$'}
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ const PaymentCardTitle = () => {
   const { t } = useTranslation();
 
   return (
-    <div className='flex gap-1 mb-[30px] pt-10 '>
+    <div className='flex gap-1 mb-[30px]'>
       <div className='text-[var(--c-purple)]'>
         <Icon icon='dollar' />
       </div>
