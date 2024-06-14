@@ -18,7 +18,7 @@ const Delivery = () => {
       {/* Something wrong with the gradient breaks my icon */}
       <div className='flex'>
         <div className='gradient-border-wrapper'>
-          <div className='gradient-border max-w-[550px] min-h-[250px] w-full h-full'>
+          <div className='gradient-border min-w-[550px] min-h-[250px] w-full h-full'>
             {/* {Object.keys(DATA).map((key) => {
             const item = DATA[key];
             return (
@@ -84,7 +84,7 @@ const Delivery = () => {
             </div>
           </div>
         </div>
-        <Icon className='fill-current w-10' icon='courier' />
+        <img src='/public/illustration.png' alt='Courier' />
       </div>
     </div>
   );
